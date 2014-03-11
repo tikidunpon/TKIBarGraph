@@ -21,6 +21,9 @@
 		6B68A6B618CC50BF008BA377 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B68A69818CC50BE008BA377 /* UIKit.framework */; };
 		6B68A6BE18CC50BF008BA377 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B68A6BC18CC50BF008BA377 /* InfoPlist.strings */; };
 		6B68A6C018CC50BF008BA377 /* TKIBarGraphSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68A6BF18CC50BF008BA377 /* TKIBarGraphSampleTests.m */; };
+		6B68A6CB18CC50D5008BA377 /* TKIBarGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68A6CA18CC50D5008BA377 /* TKIBarGraphView.m */; };
+		6B68A6CE18CC5EC0008BA377 /* TKITableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B68A6CD18CC5EC0008BA377 /* TKITableCell.m */; };
+		6B9B641C18CC6A8D004DD611 /* TKIBarGraphItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B641B18CC6A8D004DD611 /* TKIBarGraphItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,7 @@
 		6B68A69E18CC50BE008BA377 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B68A6A018CC50BE008BA377 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B68A6A218CC50BE008BA377 /* TKIBarGraphSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TKIBarGraphSample-Prefix.pch"; sourceTree = "<group>"; };
-		6B68A6A318CC50BE008BA377 /* TKIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKIAppDelegate.h; sourceTree = "<group>"; };
+		6B68A6A318CC50BE008BA377 /* TKIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TKIAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6B68A6A418CC50BE008BA377 /* TKIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKIAppDelegate.m; sourceTree = "<group>"; };
 		6B68A6A718CC50BF008BA377 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B68A6A918CC50BF008BA377 /* TKIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKIViewController.h; sourceTree = "<group>"; };
@@ -53,6 +56,12 @@
 		6B68A6BB18CC50BF008BA377 /* TKIBarGraphSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TKIBarGraphSampleTests-Info.plist"; sourceTree = "<group>"; };
 		6B68A6BD18CC50BF008BA377 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B68A6BF18CC50BF008BA377 /* TKIBarGraphSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKIBarGraphSampleTests.m; sourceTree = "<group>"; };
+		6B68A6C918CC50D5008BA377 /* TKIBarGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIBarGraphView.h; sourceTree = "<group>"; };
+		6B68A6CA18CC50D5008BA377 /* TKIBarGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIBarGraphView.m; sourceTree = "<group>"; };
+		6B68A6CC18CC5EC0008BA377 /* TKITableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKITableCell.h; sourceTree = "<group>"; };
+		6B68A6CD18CC5EC0008BA377 /* TKITableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKITableCell.m; sourceTree = "<group>"; };
+		6B9B641A18CC6A8D004DD611 /* TKIBarGraphItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIBarGraphItem.h; sourceTree = "<group>"; };
+		6B9B641B18CC6A8D004DD611 /* TKIBarGraphItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIBarGraphItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +128,12 @@
 				6B68A6AA18CC50BF008BA377 /* TKIViewController.m */,
 				6B68A6AC18CC50BF008BA377 /* Images.xcassets */,
 				6B68A69B18CC50BE008BA377 /* Supporting Files */,
+				6B68A6C918CC50D5008BA377 /* TKIBarGraphView.h */,
+				6B68A6CA18CC50D5008BA377 /* TKIBarGraphView.m */,
+				6B9B641A18CC6A8D004DD611 /* TKIBarGraphItem.h */,
+				6B9B641B18CC6A8D004DD611 /* TKIBarGraphItem.m */,
+				6B68A6CC18CC5EC0008BA377 /* TKITableCell.h */,
+				6B68A6CD18CC5EC0008BA377 /* TKITableCell.m */,
 			);
 			path = TKIBarGraphSample;
 			sourceTree = "<group>";
@@ -251,8 +266,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B68A6A118CC50BE008BA377 /* main.m in Sources */,
+				6B68A6CE18CC5EC0008BA377 /* TKITableCell.m in Sources */,
+				6B9B641C18CC6A8D004DD611 /* TKIBarGraphItem.m in Sources */,
 				6B68A6A518CC50BF008BA377 /* TKIAppDelegate.m in Sources */,
 				6B68A6AB18CC50BF008BA377 /* TKIViewController.m in Sources */,
+				6B68A6CB18CC50D5008BA377 /* TKIBarGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +479,7 @@
 				6B68A6C518CC50BF008BA377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B68A6C618CC50BF008BA377 /* Build configuration list for PBXNativeTarget "TKIBarGraphSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +488,7 @@
 				6B68A6C818CC50BF008BA377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
