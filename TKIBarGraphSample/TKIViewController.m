@@ -40,10 +40,19 @@
     {
         return cell;
     }
-    [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
-    [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
-    [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
-    [cell.barGraphView addItemWithName:@"Test4" color:[UIColor yellowColor] val:2];
+    
+    if (indexPath.row == 0) {
+        [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
+        [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
+        [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
+        [cell.barGraphView addItemWithName:@"Test4" color:[UIColor yellowColor] val:2];
+    }
+    else
+    {
+        [cell.barGraphView addItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : @10,
+                                                                  [UIColor greenColor] : @10,
+                                                                  [UIColor blueColor]  : @10}];
+    }
     return cell;
 }
 

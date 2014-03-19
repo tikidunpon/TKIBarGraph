@@ -17,6 +17,9 @@
 /*!set graphItem with item info */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
 
+/*!set graphItem with Dictionary(key is UIColor : value is NSNumber ) */
+- (void)addItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
+
 /*!return immutable TKIBarGraphItems */
 - (NSArray *)items;
 
