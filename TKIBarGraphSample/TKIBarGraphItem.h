@@ -10,13 +10,14 @@
 
 @interface TKIBarGraphItem : NSObject
 
-@property (nonatomic, copy,readonly) NSString  *name;
+@property (nonatomic, copy,readonly)   NSString  *name;
 @property (nonatomic, strong,readonly) UIColor   *color;
-@property (nonatomic) CGFloat   percentage;
-@property (nonatomic) CGRect    fillRect;
-@property (nonatomic,readonly) CGFloat val;
+@property (nonatomic, assign)          CGFloat   percentage;
+@property (nonatomic, assign)          CGRect    fillRect;
+@property (nonatomic,readonly)         CGFloat   val;
 
 - (instancetype)initWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
+
 + (instancetype)graphItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
 
 @end
