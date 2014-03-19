@@ -21,6 +21,7 @@
 
 @implementation TKIBarGraphView
 
+#pragma mark - Initializer
 - (void)awakeFromNib
 {
     [self privateInit];
@@ -52,6 +53,7 @@
     self.totalVal += item.val;
 }
 
+/*!return immutable TKIBarGraphItems */
 - (NSArray *)items
 {
     return [self.internalItems copy];
@@ -74,6 +76,7 @@
     [self drawBarGraph];
 }
 
+#pragma mark - Private Methods
 - (void)calcFillRect:(CGRect)baseRect
 {
     if ( [self.items count] <= 0 )
@@ -81,7 +84,7 @@
         return;
     }
     
-    // calc and set percentage
+    // calc and set percentage to barGraphItems
     CGFloat startPoint = 0;
     for ( TKIBarGraphItem *item in self.internalItems )
     {
@@ -101,6 +104,5 @@
         [bezierPath fill];
     }
 }
-
 
 @end
