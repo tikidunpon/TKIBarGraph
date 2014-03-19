@@ -43,7 +43,7 @@
 }
 
 /*!set graphItem with item info */
-- (void)addItemName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal
+- (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal
 {
     if ( !inName || !inColor ) {
         return;
