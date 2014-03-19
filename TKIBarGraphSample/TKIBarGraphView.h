@@ -19,4 +19,8 @@
 
 /*!return immutable TKIBarGraphItems */
 - (NSArray *)items;
+
+/*!reset all items */
+- (void)resetAllGraphItem;
+
 @end

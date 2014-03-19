@@ -57,6 +57,16 @@
     return [self.internalItems copy];
 }
 
+/*!reset all items */
+- (void)resetAllGraphItem
+{
+    if ([self.internalItems count] > 0)
+    {
+        [self.internalItems removeAllObjects];
+        self.totalVal = 0;
+    }
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [self calcFillRect:rect];
