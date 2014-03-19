@@ -40,10 +40,10 @@
     {
         return cell;
     }
-    [cell.barGraphView addItemWithName:@"Test1" color:[UIColor redColor] val:10];
-    [cell.barGraphView addItemWithName:@"Test2" color:[UIColor blueColor] val:20];
-    [cell.barGraphView addItemWithName:@"Test3" color:[UIColor greenColor] val:30];
-    [cell.barGraphView addItemWithName:@"Test3" color:[UIColor yellowColor] val:2];
+    [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
+    [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
+    [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
+    [cell.barGraphView addItemWithName:@"Test4" color:[UIColor yellowColor] val:2];
     return cell;
 }
 
