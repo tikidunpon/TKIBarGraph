@@ -45,6 +45,13 @@
     _totalVal = 0;
 }
 
+/*!return immutable TKIBarGraphItems */
+- (NSArray *)items
+{
+    NSLog(@"%s",__func__);
+    return [self.internalItems copy];
+}
+
 /*!set graphItem with item info */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal
 {
@@ -81,13 +88,6 @@
     }
 }
 
-/*!return immutable TKIBarGraphItems */
-- (NSArray *)items
-{
-    NSLog(@"%s",__func__);
-    return [self.internalItems copy];
-}
-
 /*!reset all items */
 - (void)resetAllGraphItem
 {
@@ -99,6 +99,56 @@
     }
 }
 
+/*!update item */
+- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal
+{
+    NSLog(@"%s",__func__);
+    if ( !inName ) {
+        return;
+    }
+    for (TKIBarGraphItem *item in self.internalItems)
+    {
+        if ([item.name compare:inName options:0] == NSOrderedSame) {
+            item.color = inColor;
+            self.totalVal -= item.val;
+            item.val = inVal;
+            self.totalVal += item.val;
+        }
+    }
+}
+
+/*!update item with dict*/
+- (void)updateItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict
+{
+    NSLog(@"%s",__func__);
+    if ( !inName || !inDict ) {
+        return;
+    }
+    
+    int i = 0;
+    for (UIColor *inColorKey in [inDict allKeys]) {
+        if ( ![inColorKey isKindOfClass:[UIColor class]] ||
+            ![[inDict objectForKey:inColorKey] isKindOfClass:[NSNumber class]])
+        {
+            return;
+        }
+        
+        NSNumber *inVal = inDict[inColorKey];
+        TKIBarGraphItem *item = self.internalItems[i];
+        
+        if ([item.name compare:inName options:0] == NSOrderedSame)  {
+            
+            item.color     = inColorKey;
+            self.totalVal -= item.val;
+            item.val       = [inVal floatValue];
+            self.totalVal += item.val;
+        }
+        i++;
+    }
+}
+
+#pragma mark - Private Methods
+
 - (void)drawRect:(CGRect)rect
 {
     NSLog(@"%s",__func__);
@@ -107,7 +157,6 @@
     [self drawBarGraph];
 }
 
-#pragma mark - Private Methods
 - (void)calcFillRect:(CGRect)baseRect
 {
     NSLog(@"%s",__func__);

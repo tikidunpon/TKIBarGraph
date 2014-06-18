@@ -10,8 +10,6 @@
 
 @interface TKIBarGraphItem ()
 @property (nonatomic, copy) NSString  *name;
-@property (nonatomic, strong) UIColor   *color;
-@property (nonatomic) CGFloat val;
 @end
 
 @implementation TKIBarGraphItem

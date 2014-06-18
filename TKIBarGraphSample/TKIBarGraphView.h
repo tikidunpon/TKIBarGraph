@@ -26,4 +26,10 @@
 /*!reset all items */
 - (void)resetAllGraphItem;
 
+/*!update item */
+- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
+
+/*!update item with dict*/
+- (void)updateItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
+
 @end

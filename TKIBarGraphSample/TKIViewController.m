@@ -8,6 +8,8 @@
 
 #import "TKIViewController.h"
 #import "TKITableCell.h"
+#import "TKIBarGraphItem.h"
+
 @interface TKIViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,weak) IBOutlet UITableView *tableView;
 @end
@@ -54,6 +56,21 @@
                                                                   [UIColor blueColor]  : @10}];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 選択されたセル内のバーグラフアイテムを取得
+    TKITableCell    *cell          = (TKITableCell *)[tableView cellForRowAtIndexPath:indexPath];
+    TKIBarGraphItem *barGraphItem  = cell.barGraphView.items[2];
+    
+    // バーグラフを更新
+    // [cell.barGraphView updateItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:barGraphItem.val + 20];
+    NSNumber *updateVal = [NSNumber numberWithInteger:(barGraphItem.val + 10)];
+    [cell.barGraphView updateItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : updateVal,
+                                                                 [UIColor greenColor] : @10,
+                                                                 [UIColor blueColor]  : @10 }];
+    [cell.barGraphView setNeedsDisplay];
 }
 
 @end
