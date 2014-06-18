@@ -14,8 +14,10 @@
  */
 @interface TKIBarGraphView : UIView
 
+@property (nonatomic) BOOL animation;
+
 /*!set graphItem with item info */
-- (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
+- (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
 
 /*!set graphItem with Dictionary(key is UIColor : value is NSNumber ) */
 - (void)addItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
@@ -27,9 +29,9 @@
 - (void)resetAllGraphItem;
 
 /*!update item */
-- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
+- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
 
-/*!update item with dict*/
+/*!update item with dictionary */
 - (void)updateItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
 
 @end

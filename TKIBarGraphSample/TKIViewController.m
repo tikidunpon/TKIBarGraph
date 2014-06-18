@@ -27,7 +27,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -43,7 +42,9 @@
         return cell;
     }
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0)
+    {
+        // add barGraph Item
         [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
         [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
         [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
@@ -51,6 +52,7 @@
     }
     else
     {
+        // add barGraph Item with dictionary
         [cell.barGraphView addItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : @10,
                                                                   [UIColor greenColor] : @10,
                                                                   [UIColor blueColor]  : @10}];
@@ -62,14 +64,23 @@
 {
     // 選択されたセル内のバーグラフアイテムを取得
     TKITableCell    *cell          = (TKITableCell *)[tableView cellForRowAtIndexPath:indexPath];
-    TKIBarGraphItem *barGraphItem  = cell.barGraphView.items[2];
+    TKIBarGraphItem *barGraphItem;
     
     // バーグラフを更新
-    // [cell.barGraphView updateItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:barGraphItem.val + 20];
-    NSNumber *updateVal = [NSNumber numberWithInteger:(barGraphItem.val + 10)];
-    [cell.barGraphView updateItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : updateVal,
-                                                                 [UIColor greenColor] : @10,
-                                                                 [UIColor blueColor]  : @10 }];
+    if (indexPath.row == 0)
+    {
+        barGraphItem = [cell.barGraphView.items firstObject];
+        [cell.barGraphView updateItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:barGraphItem.val + 20];
+    }
+    else
+    {
+        barGraphItem = cell.barGraphView.items[2];
+        NSNumber *updateVal = [NSNumber numberWithInteger:(barGraphItem.val + 10)];
+        [cell.barGraphView updateItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : updateVal,
+                                                                     [UIColor greenColor] : @10,
+                                                                     [UIColor blueColor]  : @10 }];
+    }
+    
     [cell.barGraphView setNeedsDisplay];
 }
 
