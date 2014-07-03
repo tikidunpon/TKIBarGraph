@@ -19,9 +19,6 @@
 /*!set graphItem with item info */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
 
-/*!set graphItem with Dictionary(key is UIColor : value is NSNumber ) */
-- (void)addItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
-
 /*!return immutable TKIBarGraphItems */
 - (NSArray *)items;
 
@@ -30,8 +27,5 @@
 
 /*!update item */
 - (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
-
-/*!update item with dictionary */
-- (void)updateItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict;
 
 @end

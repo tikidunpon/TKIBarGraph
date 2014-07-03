@@ -69,33 +69,6 @@
     self.totalVal += item.val;
 }
 
-- (void)addItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict
-{
-    NSLog(@"%s",__func__);
-    if ( !inName || !inDict )
-    {
-        return;
-    }
-    
-    for (UIColor *inColorKey in [inDict allKeys])
-    {
-        if ( ![inColorKey isKindOfClass:[UIColor class]] ||
-             ![[inDict objectForKey:inColorKey] isKindOfClass:[NSNumber class]])
-        {
-            return;
-        }
-        @autoreleasepool
-        {
-            NSNumber *inVal = inDict[inColorKey];
-            TKIBarGraphItem *item = [TKIBarGraphItem graphItemWithName:inName
-                                                                 color:inColorKey
-                                                                   val:[inVal floatValue]];
-            [self.internalItems addObject:item];
-            self.totalVal += item.val;
-        }
-    }
-}
-
 #pragma mark - Reset Item
 /*!reset all items */
 - (void)resetAllGraphItem
@@ -127,45 +100,6 @@
             item.val = inVal;
             self.totalVal += item.val;
         }
-    }
-}
-
-/*!update item with dict*/
-- (void)updateItemWithName:(NSString *)inName dictionary:(NSDictionary *)inDict
-{
-    NSLog(@"%s",__func__);
-    
-    if ( !inName || !inDict )
-    {
-        return;
-    }
-    
-    int i = 0;
-    for (UIColor *inColorKey in [inDict allKeys])
-    {
-        if ( ![inColorKey isKindOfClass:[UIColor class]] ||
-             ![[inDict objectForKey:inColorKey] isKindOfClass:[NSNumber class]])
-        {
-            return;
-        }
-
-        if (i > [self.internalItems count] - 1)
-        {
-            return;
-        }
-        
-        TKIBarGraphItem *item = self.internalItems[i];
-        
-        NSNumber *inVal = inDict[inColorKey];
-        
-        if ([item.name compare:inName options:0] == NSOrderedSame)
-        {
-            item.color     = inColorKey;
-            self.totalVal -= item.val;
-            item.val       = [inVal floatValue];
-            self.totalVal += item.val;
-        }
-        i++;
     }
 }
 

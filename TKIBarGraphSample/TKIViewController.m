@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.tableView.delegate   = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,49 +37,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TKITableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
     if ( [cell.barGraphView.items count] > 0 )
     {
         return cell;
     }
     
-    if (indexPath.row == 0)
-    {
-        // add barGraph Item
-        [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
-        [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
-        [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
-        [cell.barGraphView addItemWithName:@"Test4" color:[UIColor yellowColor] val:2];
-    }
-    else
-    {
-        // add barGraph Item with dictionary
-        [cell.barGraphView addItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : @10,
-                                                                  [UIColor greenColor] : @10,
-                                                                  [UIColor blueColor]  : @10}];
-    }
+     // add barGraph Item
+    [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
+    [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
+    [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
+    [cell.barGraphView addItemWithName:@"Test4" color:[UIColor yellowColor] val:2];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // 選択されたセル内のバーグラフアイテムを取得
+    // get barGraphItem in selected cell
     TKITableCell    *cell          = (TKITableCell *)[tableView cellForRowAtIndexPath:indexPath];
-    TKIBarGraphItem *barGraphItem;
+    TKIBarGraphItem *barGraphItem  = [cell.barGraphView.items firstObject];
     
-    // バーグラフを更新
-    if (indexPath.row == 0)
-    {
-        barGraphItem = [cell.barGraphView.items firstObject];
-        [cell.barGraphView updateItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:barGraphItem.val + 20];
-    }
-    else
-    {
-        barGraphItem = cell.barGraphView.items[2];
-        NSNumber *updateVal = [NSNumber numberWithInteger:(barGraphItem.val + 10)];
-        [cell.barGraphView updateItemWithName:@"Test1" dictionary:@{ [UIColor redColor]   : updateVal,
-                                                                     [UIColor greenColor] : @10,
-                                                                     [UIColor blueColor]  : @10 }];
-    }
+    // update barGraph
+    [cell.barGraphView updateItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:barGraphItem.val + 20];
     
     [cell.barGraphView setNeedsDisplay];
 }
