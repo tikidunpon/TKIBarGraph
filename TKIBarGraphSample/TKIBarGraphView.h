@@ -7,25 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TKIBarGraphItem.h"
 
 /*!
  @class       TKIBarGraph
- @abstract    class for draw simple bar graph.
+ @abstract    Class for draw simple bar graph.
  */
 @interface TKIBarGraphView : UIView
 
-@property (nonatomic) BOOL animation;
+@property (nonatomic) BOOL animated;
 
-/*!set graphItem with item info */
+/*! Set graphItem with item info */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
 
-/*!return immutable TKIBarGraphItems */
+/*! Return immutable TKIBarGraphItems */
 - (NSArray *)items;
 
-/*!reset all items */
+/*! Return a TKIBarGraphItem */
+- (TKIBarGraphItem *)itemWithName:(NSString *)inName;
+
+/*! Reset all items */
 - (void)resetAllGraphItem;
 
-/*!update item */
-- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
+/*! Update item */
+- (void)updateItemWithName:(NSString *)inName val:(CGFloat)inValue;
+- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inValue;
 
 @end

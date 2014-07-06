@@ -27,9 +27,9 @@
 {
     _name = inName;
     _color = inColor;
-    _val = inVal;
+    _value = inVal;
     _percentage = 0.0;
-    _fillRect = CGRectZero;
+    _rect = CGRectZero;
     return self;
 }
 

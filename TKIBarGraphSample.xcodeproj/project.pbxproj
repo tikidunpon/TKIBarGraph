@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B518E9E1969985400FAF8A1 /* TKIBarGraphItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B518E9D1969985400FAF8A1 /* TKIBarGraphItemView.m */; };
 		6B68A69518CC50BE008BA377 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B68A69418CC50BE008BA377 /* Foundation.framework */; };
 		6B68A69718CC50BE008BA377 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B68A69618CC50BE008BA377 /* CoreGraphics.framework */; };
 		6B68A69918CC50BE008BA377 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B68A69818CC50BE008BA377 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B518E9C1969985400FAF8A1 /* TKIBarGraphItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIBarGraphItemView.h; sourceTree = "<group>"; };
+		6B518E9D1969985400FAF8A1 /* TKIBarGraphItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIBarGraphItemView.m; sourceTree = "<group>"; };
 		6B68A69118CC50BE008BA377 /* TKIBarGraphSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKIBarGraphSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B68A69418CC50BE008BA377 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B68A69618CC50BE008BA377 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,8 @@
 				6B68A69B18CC50BE008BA377 /* Supporting Files */,
 				6B68A6C918CC50D5008BA377 /* TKIBarGraphView.h */,
 				6B68A6CA18CC50D5008BA377 /* TKIBarGraphView.m */,
+				6B518E9C1969985400FAF8A1 /* TKIBarGraphItemView.h */,
+				6B518E9D1969985400FAF8A1 /* TKIBarGraphItemView.m */,
 				6B9B641A18CC6A8D004DD611 /* TKIBarGraphItem.h */,
 				6B9B641B18CC6A8D004DD611 /* TKIBarGraphItem.m */,
 				6B68A6CC18CC5EC0008BA377 /* TKITableCell.h */,
@@ -268,6 +273,7 @@
 				6B68A6A118CC50BE008BA377 /* main.m in Sources */,
 				6B68A6CE18CC5EC0008BA377 /* TKITableCell.m in Sources */,
 				6B9B641C18CC6A8D004DD611 /* TKIBarGraphItem.m in Sources */,
+				6B518E9E1969985400FAF8A1 /* TKIBarGraphItemView.m in Sources */,
 				6B68A6A518CC50BF008BA377 /* TKIAppDelegate.m in Sources */,
 				6B68A6AB18CC50BF008BA377 /* TKIViewController.m in Sources */,
 				6B68A6CB18CC50D5008BA377 /* TKIBarGraphView.m in Sources */,

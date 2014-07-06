@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/*! A TKIBarGraphItem objcet represents barGraph's colors and drawing rectangle  */
 @interface TKIBarGraphItem : NSObject
 
 @property (nonatomic, copy,readonly)   NSString  *name;
 @property (nonatomic, strong)          UIColor   *color;
 @property (nonatomic, assign)          CGFloat   percentage;
-@property (nonatomic, assign)          CGRect    fillRect;
-@property (nonatomic)                  CGFloat   val;
+@property (nonatomic, assign)          CGRect    rect;
+@property (nonatomic)                  CGFloat   value;
 
 - (instancetype)initWithName:(NSString *)inName color:(UIColor *)inColor val:(NSInteger)inVal;
 

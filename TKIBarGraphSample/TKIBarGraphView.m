@@ -7,11 +7,12 @@
 //
 
 #import "TKIBarGraphView.h"
+#import "TKIBarGraphItemView.h"
 #import "TKIBarGraphItem.h"
 
 @interface TKIBarGraphView ()
 
-/*!graphItems total value */
+/*!GraphItems total value */
 @property (nonatomic) CGFloat totalVal;
 
 /*!TKIBarGraphItems Array */
@@ -43,15 +44,28 @@
     NSLog(@"%s",__func__);
     _internalItems = [[NSMutableArray alloc] init];
     _totalVal      = 0;
-    _animation     = YES;
+    _animated     = YES;
 }
 
 #pragma mark - Getter
-/*!return immutable TKIBarGraphItems */
+/*!Return immutable TKIBarGraphItems */
 - (NSArray *)items
 {
     NSLog(@"%s",__func__);
     return [self.internalItems copy];
+}
+
+/*! Return a TKIBarGraphItem */
+- (TKIBarGraphItem *)itemWithName:(NSString *)inName
+{
+    for ( TKIBarGraphItem *item in self.internalItems )
+    {
+        if( [item.name compare:inName] == NSOrderedSame )
+        {
+            return item;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Add Item
@@ -66,11 +80,11 @@
     
     TKIBarGraphItem *item = [TKIBarGraphItem graphItemWithName:inName color:inColor val:inVal];
     [self.internalItems addObject:item];
-    self.totalVal += item.val;
+    self.totalVal += item.value;
 }
 
 #pragma mark - Reset Item
-/*!reset all items */
+/*!Reset all items */
 - (void)resetAllGraphItem
 {
     NSLog(@"%s",__func__);
@@ -82,8 +96,15 @@
 }
 
 #pragma mark - Update Item
-/*!update item */
-- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal
+
+/*!Update item */
+- (void)updateItemWithName:(NSString *)inName val:(CGFloat)inValue
+{
+    [self updateItemWithName:inName color:nil val:inValue];
+}
+
+/*!Update item */
+- (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inValue
 {
     NSLog(@"%s",__func__);
     if ( !inName )
@@ -95,10 +116,11 @@
     {
         if ([item.name compare:inName options:0] == NSOrderedSame)
         {
-            item.color = inColor;
-            self.totalVal -= item.val;
-            item.val = inVal;
-            self.totalVal += item.val;
+            item.color     = inColor ? inColor : item.color;
+            self.totalVal -= item.value;
+            
+            item.value     = inValue;
+            self.totalVal += item.value;
         }
     }
 }
@@ -110,37 +132,77 @@
     
     [self calcFillRect:rect];
     
-    [self drawBarGraph];
+    [self addBarGraphItemView];
+    
+    [self update];
 }
 
 - (void)calcFillRect:(CGRect)baseRect
 {
-    NSLog(@"%s",__func__);
     if ( [self.items count] <= 0 )
     {
         return;
     }
     
     // calc and set percentage to barGraphItems
-    CGFloat startPoint = 0;
+    CGFloat nextItemOffsetX = 0;
+    
     for ( TKIBarGraphItem *item in self.internalItems )
     {
-        item.percentage  = ( item.val / self.totalVal);
+        item.percentage  = ( item.value / self.totalVal );
         CGFloat barWidth = (CGRectGetWidth(baseRect) * item.percentage);
-        item.fillRect    = CGRectMake( baseRect.origin.x + startPoint, baseRect.origin.y,
+        item.rect    = CGRectMake( baseRect.origin.x + nextItemOffsetX, baseRect.origin.y,
                                     barWidth, baseRect.size.height);
-        startPoint += barWidth;
+        nextItemOffsetX += barWidth;
     }
 }
 
-- (void)drawBarGraph
+- (void)addBarGraphItemView
 {
-    NSLog(@"%s",__func__);
+    if ([self.subviews count] > 0)
+    {
+        return;
+    }
+    
+    // item has rect for drawing.
     for ( TKIBarGraphItem *item in self.internalItems )
     {
-        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:item.fillRect];
-        [item.color setFill];
-        [bezierPath fill];
+        @autoreleasepool
+        {
+            TKIBarGraphItemView *v = [[TKIBarGraphItemView alloc] initWithFrame:item.rect];
+            [v setBackgroundColor:item.color];
+            [v setName:item.name];
+            [self addSubview:v];
+        }
+    }
+}
+
+- (void)update
+{
+    if (self.animated)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            [self updateAllItem];
+        }];
+    }
+    else
+    {
+        [self updateAllItem];
+    }
+}
+
+- (void)updateAllItem
+{
+    for ( TKIBarGraphItemView *itemView in self.subviews )
+    {
+        for ( TKIBarGraphItem *item in self.internalItems )
+        {
+            if ( [itemView.name compare:item.name] == NSOrderedSame )
+            {
+                itemView.frame = item.rect;
+                [itemView setBackgroundColor:item.color];
+            }
+        }
     }
 }
 
