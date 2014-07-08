@@ -68,6 +68,19 @@
     return nil;
 }
 
+/*! Return a rectangle for specified view by name */
+- (CGRect)rectWithName:(NSString *)inName
+{
+    for ( TKIBarGraphItem *item in self.internalItems )
+    {
+        if ([item.name compare:inName] == NSOrderedSame)
+        {
+            return item.rect;
+        }
+    }
+    return CGRectZero;
+}
+
 #pragma mark - Add Item
 /*!set graphItem with item info */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal

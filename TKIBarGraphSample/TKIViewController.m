@@ -42,13 +42,8 @@
     {
         return cell;
     }
-    
-     // add barGraph Item with Name add order |not yet|challenged|clear|
-    // [cell.barGraphView addItemWithNames:@[@"not yet",@"challenged",@"clear"]];
-    // [cell.barGraphView setDefaultColor:red,blue,green];
-    
-    // if not set item default is @"left" @"center" @"right", item count is 3 and colors is rgb.
 
+    // Add barItem with name and color and value.
     [cell.barGraphView addItemWithName:@"Test1" color:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4] val:10];
     [cell.barGraphView addItemWithName:@"Test2" color:[UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.6] val:20];
     [cell.barGraphView addItemWithName:@"Test3" color:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] val:30];
@@ -59,11 +54,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // get barGraphItem in selected cell
+    // Get barGraphItem in selected cell
     TKITableCell    *cell          = (TKITableCell *)[tableView cellForRowAtIndexPath:indexPath];
     TKIBarGraphItem *barGraphItem  = [cell.barGraphView itemWithName:@"Test3"];
     
-    // update barGraph
+    // Get the rect for bar in graph view.
+    CGRect testRect3 = [cell.barGraphView rectWithName:@"Test3"];
+    NSLog(@"%@",NSStringFromCGRect(testRect3));
+    
+    // Update barGraph
     [cell.barGraphView updateItemWithName:@"Test3"  val:barGraphItem.value + 10];
     
     [cell.barGraphView setNeedsDisplay];

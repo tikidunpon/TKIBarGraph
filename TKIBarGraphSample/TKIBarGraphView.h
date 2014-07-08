@@ -17,17 +17,22 @@
 
 @property (nonatomic) BOOL animated;
 
-/*! Set graphItem with item info */
-- (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
-
 /*! Return immutable TKIBarGraphItems */
 - (NSArray *)items;
 
 /*! Return a TKIBarGraphItem */
 - (TKIBarGraphItem *)itemWithName:(NSString *)inName;
 
+/*! Return a rectangle for specified view by name. 
+ *  Returns CGRectZero if name is not found.
+ */
+- (CGRect)rectWithName:(NSString *)inName;
+
 /*! Reset all items */
 - (void)resetAllGraphItem;
+
+/*! Set graphItem with item info */
+- (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal;
 
 /*! Update item */
 - (void)updateItemWithName:(NSString *)inName val:(CGFloat)inValue;
