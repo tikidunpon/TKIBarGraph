@@ -12,10 +12,10 @@
 
 @interface TKIBarGraphView ()
 
-/*!GraphItems total value */
+/** GraphItems total value. */
 @property (nonatomic) CGFloat totalVal;
 
-/*!TKIBarGraphItems Array */
+/** Array of TKIBarGraphItem. */
 @property (nonatomic, strong) NSMutableArray *internalItems;
 
 @end
@@ -39,6 +39,9 @@
     return self;
 }
 
+/**
+ * common initializer from nib/code.
+ */
 - (void)privateInit
 {
     NSLog(@"%s",__func__);
@@ -48,14 +51,19 @@
 }
 
 #pragma mark - Getter
-/*!Return immutable TKIBarGraphItems */
+
+/**
+ * Return immutable TKIBarGraphItems.
+ */
 - (NSArray *)items
 {
     NSLog(@"%s",__func__);
     return [self.internalItems copy];
 }
 
-/*! Return a TKIBarGraphItem */
+/**
+ * Return a TKIBarGraphItem.
+ */
 - (TKIBarGraphItem *)itemWithName:(NSString *)inName
 {
     for ( TKIBarGraphItem *item in self.internalItems )
@@ -68,7 +76,9 @@
     return nil;
 }
 
-/*! Return a rectangle for specified view by name */
+/**
+ * Return a rectangle for specified view by name.
+ */
 - (CGRect)rectWithName:(NSString *)inName
 {
     for ( TKIBarGraphItem *item in self.internalItems )
@@ -82,7 +92,10 @@
 }
 
 #pragma mark - Add Item
-/*!set graphItem with item info */
+
+/**
+ * Set graphItem with item info.
+ */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal
 {
     NSLog(@"%s",__func__);
@@ -110,13 +123,13 @@
 
 #pragma mark - Update Item
 
-/*!Update item */
+/*!Update item. */
 - (void)updateItemWithName:(NSString *)inName val:(CGFloat)inValue
 {
     [self updateItemWithName:inName color:nil val:inValue];
 }
 
-/*!Update item */
+/*!Update item. */
 - (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inValue
 {
     NSLog(@"%s",__func__);
@@ -164,8 +177,10 @@
     {
         item.percentage  = ( item.value / self.totalVal );
         CGFloat barWidth = (CGRectGetWidth(baseRect) * item.percentage);
-        item.rect    = CGRectMake( baseRect.origin.x + nextItemOffsetX, baseRect.origin.y,
-                                    barWidth, baseRect.size.height);
+        item.rect        =  CGRectMake( baseRect.origin.x + nextItemOffsetX,
+                                        baseRect.origin.y,
+                                        barWidth,
+                                        baseRect.size.height);
         nextItemOffsetX += barWidth;
     }
 }
