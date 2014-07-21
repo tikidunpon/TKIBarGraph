@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TKIBarGraphItem.h"
 
-/*!
- @class       TKIBarGraph
- @abstract    Class for draw a simple bar graph.
+/**
+ * @class       TKIBarGraph
+ * @abstract    Class for draw a simple bar graph.
  */
 @interface TKIBarGraphView : UIView
 
@@ -24,7 +24,8 @@
 /** Return a TKIBarGraphItem */
 - (TKIBarGraphItem *)itemWithName:(NSString *)inName;
 
-/* Return a rectangle for specified view by name.
+/**
+ * Return a rectangle for specified view by name.
  * Returns CGRectZero if name is not found.
  */
 - (CGRect)rectWithName:(NSString *)inName;

@@ -152,6 +152,7 @@
 }
 
 #pragma mark - Calc and Draw BarGraph
+
 - (void)drawRect:(CGRect)rect
 {
     NSLog(@"%s",__func__);
@@ -176,7 +177,9 @@
     for ( TKIBarGraphItem *item in self.internalItems )
     {
         item.percentage  = ( item.value / self.totalVal );
+        
         CGFloat barWidth = (CGRectGetWidth(baseRect) * item.percentage);
+        
         item.rect        =  CGRectMake( baseRect.origin.x + nextItemOffsetX,
                                         baseRect.origin.y,
                                         barWidth,
