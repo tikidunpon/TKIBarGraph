@@ -25,13 +25,11 @@
 #pragma mark - Initializer
 - (void)awakeFromNib
 {
-    NSLog(@"%s",__func__);
     [self privateInit];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    NSLog(@"%s",__func__);
     self = [super initWithFrame:frame];
     if (self) {
         [self privateInit];
@@ -44,7 +42,6 @@
  */
 - (void)privateInit
 {
-    NSLog(@"%s",__func__);
     _internalItems = [[NSMutableArray alloc] init];
     _totalVal      = 0;
     _animated     = YES;
@@ -57,7 +54,6 @@
  */
 - (NSArray *)items
 {
-    NSLog(@"%s",__func__);
     return [self.internalItems copy];
 }
 
@@ -98,7 +94,6 @@
  */
 - (void)addItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inVal
 {
-    NSLog(@"%s",__func__);
     if ( !inName || !inColor )
     {
         return;
@@ -113,7 +108,6 @@
 /*!Reset all items */
 - (void)resetAllGraphItem
 {
-    NSLog(@"%s",__func__);
     if ([self.internalItems count] > 0)
     {
         [self.internalItems removeAllObjects];
@@ -132,7 +126,6 @@
 /*!Update item. */
 - (void)updateItemWithName:(NSString *)inName color:(UIColor *)inColor val:(CGFloat)inValue
 {
-    NSLog(@"%s",__func__);
     if ( !inName )
     {
         return;
@@ -155,8 +148,6 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"%s",__func__);
-    
     [self calcFillRect:rect];
     
     [self addBarGraphItemView];
